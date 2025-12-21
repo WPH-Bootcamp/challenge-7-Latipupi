@@ -1,1 +1,131 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/*  GLOBAL BODY STYLE */
+@layer base {
+  html {
+    @apply bg-white text-slate-900;
+    font-family: Quicksand, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+
+  html.dark {
+    @apply bg-black text-white;
+  }
+
+  body {
+    @apply min-h-screen bg-inherit text-inherit;
+  }
+}
+
+@theme {
+  --color-primary: #FF623E;   
+  --color-secondary: #FFFFFF;
+  --color-tertiary : #181D27;
+  --color-four : #A4A7AE;
+  --color-five : #0A0D12;
+  --color-six : #DEDCDC;
+  --color-seven : #CC4E32;
+}
+
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700; /* variable range */
+  font-style: normal;
+  font-display: swap;
+}
+
+/*  GLOBAL BODY STYLE */
+@layer base {
+  html {
+    @apply bg-white text-slate-900;
+    font-family: Quicksand, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+
+  html.dark {
+    @apply bg-black text-white;
+  }
+
+  body {
+    @apply min-h-screen bg-inherit text-inherit;
+  }
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE & Edge lama */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari */
+}
+
+
+/* 1. Definisi Garis (::before) pada setiap item */
+@media (max-width: 767px) {
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem; /* Ruang untuk garis di antara item */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 19px; /* Posisi horizontal garis (harus sejajar dengan pusat buletan) */
+    width: 1px;
+    height: 100%; /* Garis memanjang ke seluruh tinggi item */
+    background-color: #DFDFDF; /* Warna abu-abu cerah */
+    z-index: 0;
+}
+
+/* 2. Sembunyikan Garis pada Item Terakhir */
+.timeline-item:last-child::before {
+    display: none;
+}
+
+/* 3. Penyesuaian Posisi Buletan */
+.timeline-dot {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+}
+
+@media (min-width: 768px) {
+  
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem; /* Ruang untuk garis di antara item */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%; /* Posisi horizontal garis (harus sejajar dengan pusat buletan) */
+    width: 1px;
+    height: 100%; /* Garis memanjang ke seluruh tinggi item */
+    background-color: #DFDFDF; /* Warna abu-abu cerah */
+    z-index: 0;
+}
+
+/* 2. Sembunyikan Garis pada Item Terakhir */
+.timeline-item:last-child::before {
+    display: none;
+}
+
+/* 3. Penyesuaian Posisi Buletan */
+.timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 48.5%;
+    z-index: 10;
+}
+}
